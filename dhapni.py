@@ -15,15 +15,12 @@ from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 
-driver = webdriver.Chrome("chromedriver.exe")
-driver.set_window_size(1920, 1080)
-
-time.sleep(5)
-
 with open('links.txt', 'r') as links_file:
     test_links = links_file.read().split("\n")
 
 for test_link in test_links:
+    driver = webdriver.Chrome("chromedriver.exe")
+    driver.set_window_size(1920, 1080)
     driver.get(test_link)
     time.sleep(2)
 
