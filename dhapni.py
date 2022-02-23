@@ -1,3 +1,4 @@
+from gettext import find
 import os
 import re
 import time
@@ -57,6 +58,8 @@ for test_link in test_links:
         # answer images
         text = elements[1].get_attribute('innerHTML')
         links = re.findall(r'src="([^"]*)"', text)
+        _links = filter(lambda link: not(1+link.find("file")), links)
+        links = [link for link in _links]
         i = 1
         answer_image_furls = []
         if links:
